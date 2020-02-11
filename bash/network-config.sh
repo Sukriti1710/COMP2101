@@ -21,16 +21,13 @@
 #         finding the router IP address from the route table, and looking
 #         up the router's hostname using its IP address, not by just
 #         printing out literal text.
-# sample of desired output:
-#   Router Address  : 192.168.2.1
-#   Router Hostname : router-name-from-hosts-file
 
 # we use the hostname command to get our system name
 # the LAN name is looked up using the LAN address in case it is different from the system name
 # finding external information relies on curl being installed and relies on live internet connection
 # awk is used to extract only the data we want displayed from the commands which produce extra data
 # this command is ugly done this way, so generating the output data into variables is recommended to make the script more readable.
-# e.g. 
+# e.g.
 #   interface_name=$(ip a |awk '/: e/{gsub(/:/,"");print $2}')
 
 myhostname=$(hostname)
@@ -51,4 +48,3 @@ External Name   : $external_name
 Router Address  : $router_address
 Router Hostname : $router_hostname
 EOF
-
